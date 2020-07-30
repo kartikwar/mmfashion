@@ -33,17 +33,11 @@ mmfashion
 ├── configs
 ├── data
 │   ├── Attr_Predict
-│   │   ├── Anno_coarse
-│   │   │   ├── train.txt
-│   │   │   ├── test.txt
-│   │   │   ├── val.txt
-│   │   │   ├── train_attr.txt
-│   │   │   ├── ...
-│   │   ├── Anno_fine
-│   │   │   ├── train.txt
-│   │   │   ├── test.txt
-│   │   │   ├── val.txt
-│   │   │   ├── ...
+│   │   ├── train.txt
+│   │   ├── test.txt
+│   │   ├── val.txt
+│   │   ├── train_attr.txt
+│   │   ├── ...
 │   │   ├── Img
 │   │   │   ├── img
 │   │   ├── Eval
@@ -58,21 +52,17 @@ mmfashion
 
 ## Prepare an AttrDataset
 
-**Updated**: We re-labeled a more accurate attribute prediction dataset, please [download](https://drive.google.com/drive/folders/19J-FY5NY7s91SiHpQQBo2ad3xjIB42iN?usp=sharing) them.
-
 The file tree should be like this:
 
 ```sh
 Attr_Predict
-├── Anno_fine
+├── Anno
 │   ├── list_attr_cloth.txt
 │   ├── list_attr_img.txt
 │   ├── list_bbox.txt
 │   ├── list_category_cloth.txt
 │   ├── list_category_img.txt
-│   ├── list_landmarks.txt
-│   ├── ...
-├── Anno_coarse
+│   └── list_landmarks.txt
 ├── Eval
 │   └── list_eval_partition.txt
 └── Img
@@ -80,11 +70,7 @@ Attr_Predict
     └── ...
 ```
 
-Note that if you use "Anno_fine" that contains 26 better-labeled attributes, nothing else need to be done.
-
-If you use run "Anno_coarse" that contains 1000 roughly labeled attributes,
- first run the following script to re-organize them.
- `python prepare_attr_pred.py` 
+Then run `python prepare_attr_pred.py` to re-organize the dataset.
 
 Please refer to [dataset/ATTR_DATASET.md](dataset/ATTR_DATASET.md) for more info.
 

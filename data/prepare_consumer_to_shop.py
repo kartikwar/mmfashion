@@ -1,12 +1,21 @@
 import os
 
+HOME_DIR = '/home/kartik/Documents/personal/git-repos/mmfashion/data/Consumer-to-shop Clothes Retrieval Benchmark'
+
 PREFIX = 'Consumer_to_shop/Anno'
+
+PREFIX = os.path.join(HOME_DIR, 'Anno')
 
 
 def split_img():
-    fn = open('Consumer_to_shop/Eval/list_eval_partition.txt').readlines()
+    
+    file_path = os.path.join(HOME_DIR, 'Eval/list_eval_partition.txt')
+    
+    fn = open(file_path).readlines()
 
     # train dataset
+    
+    
     train_consumer2shop = open(
         os.path.join(PREFIX, 'train_consumer2shop.txt'), 'w')
     train_imgs = []

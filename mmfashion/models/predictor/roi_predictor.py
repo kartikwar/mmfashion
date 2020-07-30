@@ -11,11 +11,10 @@ class RoIPredictor(BasePredictor):
                  global_pool,
                  concat,
                  attr_predictor,
-                 cate_predictor=None,
                  roi_pool=None,
                  pretrained=None):
         super(RoIPredictor, self).__init__()
-  
+
         self.backbone = builder.build_backbone(backbone)
         self.global_pool = builder.build_global_pool(global_pool)
 
@@ -64,6 +63,7 @@ class RoIPredictor(BasePredictor):
         return attr_pred
 
     def init_weights(self, pretrained=None):
+        super(RoIPredictor, self).init_weights(pretrained)
         self.backbone.init_weights(pretrained=pretrained)
         self.global_pool.init_weights()
         self.roi_pool.init_weights()

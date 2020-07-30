@@ -1,6 +1,6 @@
 # AttrDataset
 
-- Annotations (Anno_fine/ Anno_coarse/)
+- Annotations (Anno/)
 
     - Attribute Annotations (list_attr_cloth.txt & list_attr_img.txt)
 

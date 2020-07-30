@@ -1,7 +1,12 @@
 import os
 
+HOME_DIR = '/home/kartik/Documents/personal/git-repos/mmfashion/data/'
+
+
 PREFIX = 'In-shop/Anno'
 
+
+PREFIX = os.path.join(HOME_DIR, PREFIX)
 
 def split_img():
     fn = open('In-shop/Eval/list_eval_partition.txt').readlines()
@@ -31,7 +36,7 @@ def split_img():
 
 def split_label():
     id2label = {}
-    labelf = open(os.path.join(PREFIX, 'list_attr_items.txt')).readlines()
+    labelf = open(os.path.join(PREFIX, 'attributes', 'list_attr_items.txt')).readlines()
     for line in labelf[2:]:
         aline = line.strip('\n').split()
         id, label = aline[0], aline[1:]

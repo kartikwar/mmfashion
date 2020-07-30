@@ -18,8 +18,6 @@ class AttrPredictor(object):
         for i, line in enumerate(attr_cloth_file[2:]):
             self.attr_idx2name[i] = line.strip('\n').split()[0]
 
-        self.tops_type = tops_type
-
     def print_attr_name(self, pred_idx):
         for idx in pred_idx:
             print(self.attr_idx2name[idx])
@@ -34,7 +32,12 @@ class AttrPredictor(object):
 
         for i in range(pred.size(0)):
             indexes = np.argsort(data[i])[::-1]
-            for topk in self.tops_type:
-                idxes = indexes[:topk]
-                print('[ Top%d Attribute Prediction ]' % topk)
-                self.print_attr_name(idxes)
+            idx3, idx5, idx10 = indexes[:3], indexes[:5], indexes[:10]
+            print('[ Top3 Prediction ]')
+            self.print_attr_name(idx3)
+
+            print('[ Top5 Prediction ]')
+            self.print_attr_name(idx5)
+
+            print('[ Top10 Prediction ]')
+            self.print_attr_name(idx10)

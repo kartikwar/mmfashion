@@ -20,22 +20,14 @@ Examples:
 
 Assume that you have already downloaded the checkpoints to `checkpoints/`.
 
-1. Test an attribute predictor(coarse prediction).
+1. Test an attribute predictor.
 
     ```sh
     # Prepare `Anno/list_attr_cloth.txt` which is specified in `configs/attribute_predict/global_predictor_vgg_attr.py`
-    python demo/test_attr_predictor.py \
+    python demo/test_predictor.py \
         --input demo/imgs/attr_pred_demo1.jpg
     ```
-   
-   Test a category and attribute predictor(**more accurate** prediction).
-   
-   ```sh
-    # Prepare `Anno/list_attr_cloth.txt` which is specified in `configs/category_attribute_predict/global_predictor_vgg_attr.py`
-    python demo/test_cate_attr_predictor.py \
-        --input demo/imgs/attr_pred_demo1.jpg
-   ```
-  
+
 2. Test an in-shop / Consumer-to_shop clothes retriever.
 
     ```sh
@@ -78,15 +70,7 @@ Assume that you have already downloaded the checkpoints to `checkpoints/` and pr
         --config configs/attribute_predict/roi_predictor_vgg_attr.py \
         --checkpoint checkpoint/Predict/vgg/roi/latest.pth
     ```
-   
-   Test a category and attribute predictor.
-   
-   ```
-   python test tools/test_cate_attr_predictor.py \
-        --config configs/category_attribute_predict/roi_predictor_vgg.py \
-        --checkpoint checkpoint/CateAttrPredict/vgg/roi/latest.pth 
-   ```
-   
+
 2. Test an in-shop / Consumer-to_shop clothes retriever.
 
     ```sh

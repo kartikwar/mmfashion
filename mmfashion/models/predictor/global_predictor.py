@@ -10,7 +10,12 @@ class GlobalPredictor(BasePredictor):
                  backbone,
                  global_pool,
                  attr_predictor,
-                 cate_predictor=None,
+                 loss_attr=dict(
+                     type='BCEWithLogitsLoss',
+                     weight=None,
+                     size_average=None,
+                     reduce=None,
+                     reduction='mean'),
                  roi_pool=None,
                  pretrained=None):
         super(GlobalPredictor, self).__init__()
@@ -21,7 +26,7 @@ class GlobalPredictor(BasePredictor):
 
         self.loss_attr = builder.build_loss(loss_attr)
 
-    def forward_train(self, x, landmarks, attr, cate=None):
+    def forward_train(self, x, landmarks, attr):
         # 1. conv layers extract global features
         x = self.backbone(x)
 
@@ -29,8 +34,9 @@ class GlobalPredictor(BasePredictor):
         global_x = self.global_pool(x)
         global_x = global_x.view(global_x.size(0), -1)
 
+        attr_pred = self.attr_predictor(global_x)
         losses = dict()
-        losses['loss_attr'] = self.attr_predictor(global_x, attr)
+        losses['loss_attr'] = self.loss_attr(attr_pred, attr)
 
         return losses
 
@@ -56,6 +62,7 @@ class GlobalPredictor(BasePredictor):
         return attr_pred
 
     def init_weights(self, pretrained=None):
+        super(GlobalPredictor, self).init_weights(pretrained)
         self.backbone.init_weights(pretrained=pretrained)
         self.global_pool.init_weights()
         self.attr_predictor.init_weights()

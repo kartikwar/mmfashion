@@ -107,6 +107,7 @@ def parse_requirements(fname='requirements.txt', with_version=True):
 
 
 if __name__ == '__main__':
+    print('started setup')
     setup(
         name='mmfashion',
         version=get_version(),

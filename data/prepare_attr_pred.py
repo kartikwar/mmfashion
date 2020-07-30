@@ -1,9 +1,18 @@
 import os
 
+
+
+HOME_DIR = '/home/kartik/Documents/personal/git-repos/mmfashion/data/'
+
+
 PREFIX = 'Attr_Predict/Anno'
 
+PREFIX = os.path.join(HOME_DIR, PREFIX)
 
 def split_img():
+    
+    
+    
     rf = open('Attr_Predict/Eval/list_eval_partition.txt').readlines()
     wf1 = open(os.path.join(PREFIX, 'train.txt'), 'w')
     wf2 = open(os.path.join(PREFIX, 'test.txt'), 'w')
