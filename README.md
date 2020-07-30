@@ -1,4 +1,4 @@
-# MMFashion
+# Assignment
 
 <p align="center">
     <img src='./misc/logo_mmfashion.png' width=320>
